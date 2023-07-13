@@ -5,9 +5,17 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 	text: {
 		type: String,
-		required: true
+		required: false
 	},
-	video_url: {
+	index: {
+		type: String,
+		required: false
+	},
+	filename:{
+		type: String,
+		required: false
+	},
+	text_url: {
 		type: String,
 		required: false
 	},
