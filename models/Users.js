@@ -19,6 +19,22 @@ const UserSchema = new Schema({
 		type: String,
 		required: false
 	},
+	phoneNumber: {
+		type: String,
+		required: false
+	},
+	age: {
+		type: String,
+		required: false
+	},
+	gender:{
+		type: String,
+		required: false
+	},
+	nativeLanguage:{
+		type: String,
+		required: false
+	},
 	audio_url: {
 		type: String,
 		required: false

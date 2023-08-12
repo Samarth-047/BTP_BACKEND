@@ -78,8 +78,8 @@ async function createAndUploadFileAudio(auth, filename, file){
      }
 }
 
-async  function UploadData(audio_url,text_url,text,filename){
-    User.findOneAndUpdate({text: text}, {audio_url: audio_url, text_url: text_url}, { upsert: true }, (err, doc) => {
+async  function UploadData(audio_url,text_url,text,filename,phoneNumber,age,gender,nativeLanguage){
+    User.findOneAndUpdate({text: text}, {audio_url: audio_url, text_url: text_url,phoneNumber:phoneNumber,age:age,gender:gender,nativeLanguage:nativeLanguage}, { upsert: true }, (err, doc) => {
         if (err) {
             console.log("nahi hua update!");
         }
@@ -96,7 +96,7 @@ router.post("/add", async (req, res) => {
     let audio_url=await createAndUploadFileAudio(auth, fr_name, req.body.file);
     console.log(audio_url);
     console.log(req.body.text);
-    await UploadData(audio_url,text_url,req.body.text,req.body.filename);
+    await UploadData(audio_url,text_url,req.body.text,req.body.filename,req.body.gender,req.body.age,req.body.nativeLanguage,req.body.phoneNumber);
 
     res.json("Success");
 });
@@ -116,7 +116,11 @@ router.post("/addText", (req, res) => {
         filename: filename,
         index: req.body.index,
         text_url: "",
-        audio_url: ""
+        audio_url: "",
+        phoneNumber: "",
+        age: "",
+        nativeLanguage: "",
+        gender: ""
     });
     // push data to user collection
     newUser.save()
