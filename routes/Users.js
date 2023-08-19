@@ -96,8 +96,7 @@ router.post("/add", async (req, res) => {
     let audio_url=await createAndUploadFileAudio(auth, fr_name, req.body.file);
     console.log(audio_url);
     console.log(req.body.text);
-    await UploadData(audio_url,text_url,req.body.text,req.body.filename,req.body.gender,req.body.age,req.body.nativeLanguage,req.body.phoneNumber);
-
+    await UploadData(audio_url,text_url,req.body.text,req.body.filename,req.body.phoneNumber,req.body.age,req.body.gender,req.body.nativeLanguage);
     res.json("Success");
 });
 
