@@ -149,5 +149,16 @@ router.get("/getText", (req, res) => {
         })
         .catch(err => console.log(err));
 });
+
+router.get("/getAllMetaData", async(req, res) => {
+    // extract all user records from database
+    try {
+        const items = await User.find();
+        res.json(items);
+      } catch (error) {
+        console.error('Error fetching items:', error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+});
 module.exports = router;
 
