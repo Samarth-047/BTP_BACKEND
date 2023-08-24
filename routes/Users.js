@@ -141,6 +141,7 @@ router.get("/getText", (req, res) => {
             let randomIndex = Math.floor(Math.random() * user.length);
             // console.log(user[randomIndex]);
             const newRecord = {
+                id : user[randomIndex]._id,
                 text: user[randomIndex].text,
                 index: user[randomIndex].index,
                 filename: user[randomIndex].filename
